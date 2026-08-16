@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · iPrime{% endblock %}
+{% block content %}
+
+<p class="eyebrow">Signed in</p>
+<h1 class="title">Welcome back, {{ username }}.</h1>
+<p class="subtitle">Here's a snapshot of your account. Connect a device to start seeing real vitals here.</p>
+
+<div class="vitals-grid">
+  <div class="vitals-card">
+    <span class="vitals-card__label">Heart rate</span>
+    <span class="vitals-card__value">—</span>
+    <span class="vitals-card__note">Not connected yet</span>
+  </div>
+  <div class="vitals-card">
+    <span class="vitals-card__label">Blood pressure</span>
+    <span class="vitals-card__value">—</span>
+    <span class="vitals-card__note">Not connected yet</span>
+  </div>
+  <div class="vitals-card">
+    <span class="vitals-card__label">Sleep</span>
+    <span class="vitals-card__value">—</span>
+    <span class="vitals-card__note">Not connected yet</span>
+  </div>
+</div>
+
+<a href="{{ url_for('auth.logout') }}" class="btn btn--primary" style="text-decoration:none; display:inline-flex;">
+  <span>Sign out</span>
+  <span class="btn__icon">&rarr;</span>
+</a>
+
+{% endblock %}

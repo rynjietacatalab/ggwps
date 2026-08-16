@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Create account · iPrime{% endblock %}
+{% block content %}
+
+<p class="eyebrow">Step 1 of 2 · Create account</p>
+<h1 class="title">Start monitoring your health</h1>
+<p class="subtitle">Create your iPrime account. It only takes a minute.</p>
+
+<form method="POST" class="form">
+  <div class="field">
+    <label class="field__label" for="username">Username</label>
+    <input class="field__input" type="text" id="username" name="username" placeholder="choose a username" required autofocus>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="email">Email</label>
+    <input class="field__input" type="email" id="email" name="email" placeholder="you@example.com" required>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="password">Password</label>
+    <input class="field__input" type="password" id="password" name="password" placeholder="at least 6 characters" required>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="confirm_password">Confirm password</label>
+    <input class="field__input" type="password" id="confirm_password" name="confirm_password" placeholder="type it again" required>
+  </div>
+
+  <button type="submit" class="btn btn--primary">
+    <span>Create account</span>
+    <span class="btn__icon">&rarr;</span>
+  </button>
+</form>
+
+<p class="footer-line">Already have an account? <a href="{{ url_for('auth.login') }}">Sign in</a></p>
+
+{% endblock %}

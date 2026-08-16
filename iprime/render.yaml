@@ -1,0 +1,24 @@
+# Optional. If you use Render's "Blueprint" deploy option, this file
+# tells Render how to build and run iPrime, and which environment
+# variables it needs (you still enter the actual values in Render's
+# dashboard — this just declares that they exist).
+#
+# Not required — you can also just click "New > Web Service" in Render
+# and fill these settings in by hand. See README.md.
+
+services:
+  - type: web
+    name: iprime
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: EMAIL_ADDRESS
+        sync: false
+      - key: EMAIL_APP_PASSWORD
+        sync: false

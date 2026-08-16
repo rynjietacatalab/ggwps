@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Sign in · iPrime{% endblock %}
+{% block content %}
+
+<p class="eyebrow">Sign in</p>
+<h1 class="title">Welcome back</h1>
+<p class="subtitle">Sign in with your username or email.</p>
+
+<form method="POST" class="form">
+  <div class="field">
+    <label class="field__label" for="identifier">Username or email</label>
+    <input class="field__input" type="text" id="identifier" name="identifier" placeholder="you@example.com" required autofocus>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="password">Password</label>
+    <input class="field__input" type="password" id="password" name="password" placeholder="••••••••" required>
+  </div>
+
+  <button type="submit" class="btn btn--primary">
+    <span>Sign in</span>
+    <span class="btn__icon">&rarr;</span>
+  </button>
+</form>
+
+<p class="footer-line">New to iPrime? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
+
+{% endblock %}

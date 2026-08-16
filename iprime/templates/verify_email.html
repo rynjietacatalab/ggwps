@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Verify email · iPrime{% endblock %}
+{% block content %}
+
+<p class="eyebrow">Step 2 of 2 · Verify</p>
+<h1 class="title">Confirm it's really you</h1>
+<p class="subtitle">We sent a 6-digit code to <strong>{{ masked_email }}</strong>. It expires in 5 minutes — you'll only need to do this once.</p>
+
+<form method="POST" class="form" id="otp-form">
+  <div class="rx-slip">
+    <div class="rx-slip__row" id="otp-boxes">
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code" autofocus>
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+      <input class="rx-slip__digit" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+    </div>
+    <div class="rx-slip__perforation" aria-hidden="true"></div>
+    <div class="rx-slip__stub">
+      <span>&#8478; iPrime Clinic</span>
+      <span>Verification code</span>
+    </div>
+  </div>
+
+  <input type="hidden" name="otp" id="otp-combined">
+
+  <button type="submit" class="btn btn--primary">
+    <span>Verify &amp; activate</span>
+    <span class="btn__icon">&check;</span>
+  </button>
+</form>
+
+<form method="POST" action="{{ url_for('auth.resend_otp') }}">
+  <button type="submit" class="btn btn--ghost">Resend code</button>
+</form>
+
+<p class="footer-line"><a href="{{ url_for('auth.login') }}">Back to sign in</a></p>
+
+<script src="{{ url_for('static', filename='js/otp.js') }}"></script>
+{% endblock %}

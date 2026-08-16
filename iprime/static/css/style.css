@@ -1,0 +1,276 @@
+/* ============================================================
+   iPrime — design tokens
+   cream/warm-white = the "dirty white" secondary surface
+   latte/caramel/espresso = the nude/latte primary palette
+   ============================================================ */
+:root {
+  --cream: #efe4d3;      /* page background / dirty-white secondary */
+  --warm-white: #fffcf7; /* card surface */
+  --latte: #c9a06c;      /* soft nude accent */
+  --caramel: #a8703f;    /* interactive accent, links, hover */
+  --espresso: #4a2e1f;   /* headings, primary buttons, body text */
+  --steam: #8c7862;      /* muted / secondary text */
+  --error: #a94438;
+  --success: #6b7a4f;
+  --radius-card: 22px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--cream);
+  font-family: 'Work Sans', sans-serif;
+  color: var(--espresso);
+  display: flex;
+}
+
+/* faint EKG / pulse-line watermark, top-right of the viewport */
+.pulse-deco {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 640px;
+  height: 220px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 220'%3E%3Cpolyline points='0,140 90,140 110,60 130,200 150,140 260,140 280,60 300,200 320,140 430,140 450,60 470,200 490,140 640,140' fill='none' stroke='%23A8703F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: top right;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--warm-white);
+  border-radius: var(--radius-card);
+  padding: 44px 36px 36px;
+  box-shadow:
+    0 24px 60px -20px rgba(74, 46, 31, 0.28),
+    0 2px 8px rgba(74, 46, 31, 0.06);
+  overflow: hidden;
+}
+
+/* thin gradient bar along the top of every card */
+.card__pour {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--caramel), var(--latte), var(--cream));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 28px;
+  color: var(--caramel);
+}
+.brand__mark { display: inline-flex; }
+.brand__name {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: var(--espresso);
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin: 0 0 10px;
+}
+
+.title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 14.5px;
+  color: var(--steam);
+  margin: 0 0 26px;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field__label { font-size: 12.5px; font-weight: 600; color: var(--espresso); }
+.field__input {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(74, 46, 31, 0.14);
+  background: var(--cream);
+  color: var(--espresso);
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+.field__input::placeholder { color: rgba(140, 120, 98, 0.65); }
+.field__input:focus { border-color: var(--caramel); background: var(--warm-white); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform .1s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:active { transform: scale(0.98); }
+
+.btn--primary {
+  background: var(--espresso);
+  color: var(--warm-white);
+  box-shadow: 0 10px 22px -10px rgba(74, 46, 31, 0.55);
+}
+.btn--primary:hover { background: var(--caramel); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--caramel);
+  border: 1.5px solid rgba(168, 112, 63, 0.4);
+  margin-top: -4px;
+}
+.btn--ghost:hover { background: rgba(168, 112, 63, 0.08); }
+
+.btn__icon { font-size: 15px; }
+
+.footer-line { margin-top: 22px; font-size: 13.5px; color: var(--steam); text-align: center; }
+.footer-line a { color: var(--caramel); font-weight: 600; text-decoration: none; }
+.footer-line a:hover { text-decoration: underline; }
+
+.flash-stack { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.flash { margin: 0; padding: 10px 14px; border-radius: 10px; font-size: 13.5px; line-height: 1.4; }
+.flash--error { background: rgba(169, 68, 56, 0.1); color: var(--error); }
+.flash--success { background: rgba(107, 122, 79, 0.12); color: var(--success); }
+
+/* ------- OTP "prescription slip" (signature element) ------- */
+.rx-slip {
+  background: var(--cream);
+  border: 1px solid rgba(74, 46, 31, 0.12);
+  border-radius: 14px;
+  padding: 20px 16px 14px;
+  margin: 2px 0 22px;
+}
+.rx-slip__row { display: flex; gap: 9px; justify-content: center; }
+.rx-slip__digit {
+  width: 44px;
+  height: 56px;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--espresso);
+  background: var(--warm-white);
+  border: 1.5px solid rgba(168, 112, 63, 0.35);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.rx-slip__digit:focus { border-color: var(--caramel); box-shadow: 0 0 0 3px rgba(168, 112, 63, 0.18); }
+
+.rx-slip__perforation {
+  height: 12px;
+  margin-top: 14px;
+  background-image: radial-gradient(circle, var(--warm-white) 3.4px, transparent 3.6px);
+  background-size: 16px 12px;
+  background-repeat: repeat-x;
+  background-position: left center;
+}
+
+.rx-slip__stub {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steam);
+}
+
+/* ------- dashboard vitals placeholders ------- */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.vitals-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--cream);
+  border: 1px solid rgba(74, 46, 31, 0.1);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.vitals-card__label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--steam);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.vitals-card__value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--espresso);
+}
+.vitals-card__note {
+  font-size: 10px;
+  color: var(--steam);
+}
+
+@media (max-width: 480px) {
+  .card { padding: 36px 24px 28px; border-radius: 18px; }
+  .title { font-size: 26px; }
+  .rx-slip__digit { width: 38px; height: 50px; font-size: 19px; }
+  .vitals-grid { grid-template-columns: 1fr; }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--caramel);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
